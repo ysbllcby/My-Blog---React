@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import articles from "./article-content";
 import CommentsList from "../components/CommentsList";
+import AddCommentForm from "../components/AddCommentForm";
 import NotFoundPage from "./NotFoundPage";
 
 const ArticlePage = () => {
@@ -40,6 +41,9 @@ const ArticlePage = () => {
         {article.content.map((paragraph,i) => (
             <p key={i}>{paragraph}</p>
         ))}
+        <AddCommentForm
+            articleName={articleId}
+            onArticleUpdated={updatedArticle => setArticleInfo(updatedArticle)} />
         <CommentsList comments={articleInfo.comments} />
         </>
     );
